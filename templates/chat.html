@@ -1,0 +1,32 @@
+{% extends "layout.html"%}
+{% block content %}
+<div class=" ">
+    <div align="center">
+           
+
+        <div class="chat_window">
+            <div class="top_menu">
+                <div class="buttons">
+                    <div class="button close"></div>
+                    <div class="button minimize"></div>
+                    <div class="button maximize"></div>
+                </div>
+                <div class="title">Gen AI Powered Chat with Document</div>
+            </div>
+            <div id="loading" style="display:none; color:gray"><b>typing...</b></div>
+            <ul class="messages">
+                <div style="text-align: left; color: green">
+                    <pre style="white-space: pre-wrap; word-wrap:break-word" id="chatlog"></pre>
+                </div>
+            </ul>
+            <div class="bottom_wrapper clearfix">
+                <textarea class="message_input_wrapper" placeholder="ask me..." id="chatinput"></textarea>
+                <button class="send_message" id="sendbutton">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</div>
+{% endblock content %}

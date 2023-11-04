@@ -1,0 +1,53 @@
+{% extends "layout.html"%}
+{% block content %}
+    <div>
+           
+
+        <div class="chat_window_info">
+            
+            <div class = "row">
+            <div class="col-md-6">
+                <div class="top_menu">
+                
+                    <div class="title">Steps need to follow to use this project</div>
+                </div>
+                <div class="content-section">
+                  <h3>Project Information </h3>
+                  <p class='text-muted'><h5>Chat with your own document using</h5><br>Google Vertex AI search +<br> Maching Engine+<br> Google cloud storage +<br> Langchain <br><br>
+                  <h5>Step1:</h5> Upload file need to Chat<br></p>
+                  <form action="/upload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file">
+                    <input type="submit" value="Upload">
+                </form>
+                {% if success %}
+          <label style="color: green;">Upload successful!</label>
+      {% else %}
+          <label></label>
+      {% endif %}
+                  <h5>Step2:</h5> Split and Indexing the file<br>
+                  <h5>Step3:</h5> Chat with your uploaded docuemnt
+                  <br>
+                 
+                 
+               
+                  
+                </div>
+              </div> 
+              <div class="col-md-6">
+                <div class="top_menu">
+                
+                    <div class="title">File uploaded in google storage</div>
+                </div>
+            <ul class="content-section">
+                {% for file in filelist %}
+                <li><a target="_blank" href="https://storage.cloud.google.com/herfy-dev-documents/{{file}}">{{file}}</a></li>
+              {% endfor %}
+            </ul>
+        </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</div>
+{% endblock content %}
